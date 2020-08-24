@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} Calendario {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Calendario</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Imprimir</a>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                   href="{% url 'calendar' %}?{{ prev_month }}"><i class="fas fa-arrow-left fa-sm text-white-50"></i>
+                    Mes Anterior </a>
+
+                <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 697px;"
+                   href="{% url 'event_new' %}"> <i class="fas fa-plus fa-sm text-white-50"></i> Nuevo Evento</a>
+                <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: 31px;"
+                   href="{% url 'calendar' %}?{{ next_month }}">Mes Proximo <i
+                        class="fas fa-arrow-right fa-sm text-white-50"></i></a>
+            </div>
+
+
+            <div class="clearfix">
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            {{ calendar }}
+        </div>
+
+
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

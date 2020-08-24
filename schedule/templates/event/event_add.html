@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block title %}
+    Eventos
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Adicionar</h1>
+            <a href="{% url 'calendar' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-calendar fa-sm text-white-50"></i> Calendario</a>
+
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>
+                    {{ form.title.label }}
+                </label>
+                {{ form.title }}
+            </div>
+            <div class="form-group">
+                <label>
+                    {{ form.description.label }}
+                </label>
+                {{ form.description }}
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>
+                            {{ form.date_start_time.label }}
+                        </label>
+                        {{ form.date_start_time }}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>
+                            {{ form.date_end_time.label }}
+                        </label>
+                        {{ form.date_end_time }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>
+                            {{ form.time_start_time.label }}
+                        </label>
+                        {{ form.time_start_time }}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>
+                            {{ form.time_end_time.label }}
+                        </label>
+                        {{ form.time_end_time }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <div class="form-group">
+                        {{ form.start_time }}
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+                    <label>
+                        {{ form.end_time.label }}
+                    </label>
+                    <div class="form-group">
+                        {{ form.end_time }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary btn-user" value="Guardar">
+            <a href="{% url 'event_list' %}" class="btn btn-primary btn-user">Cancelar</a>
+        </form>
+    </div>
+
+
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

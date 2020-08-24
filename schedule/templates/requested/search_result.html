@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Listado de Solicitados</h1>
+            <form action="{% url 'search' %}" method="get"
+                  class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control bg-light border-0 small"
+                           placeholder="Buscar solicitado"
+                           aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+        <!-- Topbar Search -->
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {% for user in object_list %}
+                    <div class="card mb-4 py-3 border-left-primary">
+
+                        <div class="card-body">
+                            Usuario: {{ user.user.username }}
+
+                        </div>
+                        <a href="{% url 'dates_new_direct' user.pk %}" class="btn-block btn btn-sm btn-success shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Cita</a>
+                                            <a href="{% url 'calendar_direct' user.pk %}" class="btn-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Calendario</a>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
